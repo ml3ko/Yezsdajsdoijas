@@ -1,0 +1,44 @@
+<?php
+    $host='localhost';
+    $user='root';
+    $password='';
+    $db='users';
+
+    mysql_connect($host,$user,$password);
+    mysql_select_db($db);
+
+    if(isset($_POST['name'])){
+        $uname=$_POST['name'];
+        $passwd=$_POST['password']
+
+        $sql="select * from loginform where user='".$uname."'AND Pass='".$passwd."' limit 1 ";
+        $result=mysql_query($sql)
+
+        if(mysql_num_rows($result)==1){
+            echo " You've logged in "
+            exit();
+        }
+        else{
+            echo " You mispelled something faggot"
+            exit();
+        }
+
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="Form" method="POST">
+        <input type='text' name="name" placeholder="Your name" id="name">
+        <input type='password' name="password" placeholder="Your password" id="password">
+        <input type="submit" name="submit" value="LOGIN" id="login">
+
+    </form>
+</body>
+</html>
